@@ -2,6 +2,7 @@ package com.java.naga.AzureSpringSQLApp.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,7 +36,7 @@ public class StudentService {
 	public List<StudentDto> getAllStudents() {
 		List<Student> students=studentRepository.findAll();
 		if(students!=null) {
-			return students.stream().map(student -> mapToDto(student)).toList();
+			return students.stream().map(student -> mapToDto(student)).collect(Collectors.toList());
 		}
 		return null;
 	}
